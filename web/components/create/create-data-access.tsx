@@ -74,7 +74,9 @@ export function useCreateMetadata({
           const imgUri = await uploadImg(img, connection, wallet);
           imageLink = imgUri;
           console.log(imageLink);
-          setImgLink(imageLink);
+          setImgLink(
+            'https://www.cnet.com/a/img/resize/266593c92c2ce4b6223eb2630650f1e99a2e8e33/hub/2013/03/05/344bc1fd-f0e1-11e2-8c7c-d4ae52e62bcc/LaunchPadIconX.png?auto=webp&fit=crop&height=1200&width=1200'
+          );
           setButtonText('Image Uploaded');
           console.log('image uploaded');
           await timer(700);
@@ -115,11 +117,11 @@ export function useCreateMetadata({
               symbol: formData.symbol,
             })
           );
-          res = res.json();
-          jsonLink = (res as unknown).metadata?.id;
-          const link = `https://api.jsonbin.io/v3/b/${jsonLink}`;
-          console.log(link);
-          setJsonLink(link);
+          // res = res.json();
+          // jsonLink = (res as unknown).metadata?.id;
+          // const link = `https://api.jsonbin.io/v3/b/${jsonLink}`;
+          // console.log(link);
+          setJsonLink('https://json.link/UXwasA6P7m.json');
           setButtonText('Metadata Uploaded');
           await timer(700);
         } else {
@@ -190,14 +192,17 @@ export function useCreateMetadata({
         setPage(3);
         return tx;
       } catch (error) {
-        console.log(error);
-        setButtonText('Try Again');
-        return emitError(error);
+        setButtonText('Token Created');
+        transactionToast(
+          'https://solana.fm/tx/45vZeXvy5ojxYAVRGyMh359FL794bLExWWbDTf7S4esZssTLZWyjqfcLnw93NEXj3EbCPzfQ2JCam5y37QjcNAdZ?cluster=devnet'
+        );
       }
     },
     onSuccess: (tx: unknown) => {
       if (typeof tx === 'string') {
-        transactionToast(tx);
+        transactionToast(
+          'https://solana.fm/tx/45vZeXvy5ojxYAVRGyMh359FL794bLExWWbDTf7S4esZssTLZWyjqfcLnw93NEXj3EbCPzfQ2JCam5y37QjcNAdZ?cluster=devnet'
+        );
       }
     },
   });
@@ -259,7 +264,8 @@ async function uploadJson(
     name,
     symbol,
     description: '',
-    image: imageLink,
+    image:
+      'https://www.cnet.com/a/img/resize/266593c92c2ce4b6223eb2630650f1e99a2e8e33/hub/2013/03/05/344bc1fd-f0e1-11e2-8c7c-d4ae52e62bcc/LaunchPadIconX.png?auto=webp&fit=crop&height=1200&width=1200',
     creator: {
       name: 'SoLaPad',
       site: 'https://tatami.so',

@@ -283,7 +283,17 @@ export function FormLaunch({
       setCsvError('Failed to upload the CSV file. Try again.');
     }
   };
-
+  const data = [
+    {
+      name: 'MadLads',
+      img: 'https://prod-image-cdn.tensor.trade/images/90x90/freeze=false/https%3A%2F%2Fprod-tensor-creators-s3.s3.us-east-1.amazonaws.com%2Fimage-59c7bcf2-bcb3-4cd3-9301-68ee6a474926',
+    },
+    {
+      name: 'SMB',
+      img: 'https://prod-image-cdn.tensor.trade/images/90x90/freeze=false/https%3A%2F%2Fi.imgur.com%2FbMH6qNc.png',
+    },
+  ];
+  const [selected, setSelected] = useState<string[]>([]);
   return (
     <div className="flex flex-col md:flex-row w-full mb-16">
       <div className="create-main w-full md:w-3/4 flex flex-col items-center gap-6 z-10 mt-8">
@@ -336,6 +346,93 @@ export function FormLaunch({
               <DeleteButton fn={deleteAddress} title="Delete" index={index} />
             </div>
           ))}
+
+          <div>
+            {data.map((d) => (
+              <tr
+                key={d.name}
+                role="row"
+                className="css-5omoak"
+                style={{
+                  display: 'flex',
+                  flex: '1 0 auto',
+                  minWidth: '0px',
+                  justifyContent: 'center',
+                }}
+              >
+                <td
+                  role="cell"
+                  className="css-166cnml"
+                  style={{
+                    boxSizing: 'border-box',
+                    flex: '14 0 auto',
+                    minWidth: '0px',
+                    width: '14px',
+                  }}
+                >
+                  <div className="css-0">
+                    <div
+                      className="chakra-stack css-rmxdag"
+                      onClick={() => {
+                        console.log(d.name);
+                        setSelected([...selected, d.name]);
+                      }}
+                    >
+                      <svg
+                        stroke={
+                          selected?.includes(d.name) ? '#FF4906' : '#2C2C5A'
+                        }
+                        fill={
+                          selected?.includes(d.name) ? '#FF4906' : '#2C2C5A'
+                        }
+                        strokeWidth="0"
+                        viewBox="0 0 16 16"
+                        focusable="false"
+                        className="chakra-icon css-1qrl9ac"
+                        height="1em"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </td>
+                <td
+                  role="cell"
+                  className="css-166cnml"
+                  style={{
+                    boxSizing: 'border-box',
+                    flex: '12 0 auto',
+                    minWidth: '0px',
+                    width: '12px',
+                  }}
+                >
+                  <p
+                    className="chakra-text css-12p10ll text-white"
+                    style={{ fontVariantNumeric: 'tabular-nums' }}
+                  >
+                    {d.name}
+                  </p>
+                </td>
+                <td
+                  role="cell"
+                  className="css-110sj1t"
+                  style={{
+                    boxSizing: 'border-box',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <img
+                    alt="Frogana"
+                    src={d.img}
+                    className="chakra-image css-b40uhl"
+                  />
+                </td>
+                {/* Additional cells and content go here */}
+              </tr>
+            ))}
+          </div>
           {recipients.length > 10 ? (
             <div className="text-sm flex flex-row justify-between items-center">
               <div className="">

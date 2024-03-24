@@ -18,7 +18,7 @@ export default function DashboardFeature() {
                 SoLaPad
               </h1>
             </div>
-            <p className="text-center text-seconday-text mt-2 md:mt-0 mb-8 md:mb-4">
+            <p className="text-center text-seconday-text mt-2 md:mt-0 mb-8 md:mb-4 text-white">
               The Launchpad Suite for Solana
             </p>
             <p className="text-center font-semibold mb-2 md:mb-0 text-white">

@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  min-height: 100vh;
+  background-image: url('/background_blue.png'), linear-gradient(to bottom, #05051C, #150A40);
+  background-repeat: no-repeat, repeat;
+  background-position: right bottom, 0%;
+  font-family: 'Inter', sans-serif;
+}
+
+.wallet-adapter-button-trigger {
+  background: #1E2043 !important;
+  color: #b0b0c2 !important;
+}
+
+@media screen and (min-width: 640px) {
+  .wallet-adapter-button-trigger {
+    font-weight: 400 !important;
+    border-radius: 0.375rem !important;
+    border: 2px solid #2C2C5A !important;
+    position: relative !important;
+    height: 42px !important;
+  }
+  
+  .wallet-adapter-dropdown-list,
+  .wallet-adapter-button {
+    font-family: inherit !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .wallet-adapter-button-trigger {
+    padding: 0px !important;
+    background: none !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+  }
+}
+
+.icon-fg {
+  transform: rotate(-45deg) !important;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #2C2C5A;
+  border: 0;
+  color: transparent;
+  background-image: url('/plus.png');
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+  background-position: center;
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+  border-radius: 6px;
+  border:#1E2043 solid 1px;
+}
